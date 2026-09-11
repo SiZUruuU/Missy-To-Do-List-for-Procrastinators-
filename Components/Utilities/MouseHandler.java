@@ -13,6 +13,8 @@ public class MouseHandler implements  MouseInputListener{
         int x = e.getX();
         int y = e.getY();
 
+        System.out.println("Pressed at " + x + " " + y);
+
 
     }
 
