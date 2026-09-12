@@ -1,4 +1,7 @@
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
@@ -18,5 +21,19 @@ public class Panel extends JPanel{
         this.setDoubleBuffered(true);
 
         this.addMouseListener(mouse);
+    }
+
+    public void draw(Graphics2D g2){
+
+        this.setBackground(Color.decode("#2b035f"));
+    }
+
+    @Override 
+    public void paintComponent(Graphics g){
+        super.paintComponent(g); 
+
+        Graphics2D g2 = (Graphics2D)g; 
+
+        draw(g2);
     }
 }
