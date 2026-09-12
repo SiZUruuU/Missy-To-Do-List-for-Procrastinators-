@@ -1,5 +1,7 @@
 import javax.swing.JFrame;
 
+import Components.UIComponents.Panel;
+
 public class Missy {
     public static void main(String [] args){
 
