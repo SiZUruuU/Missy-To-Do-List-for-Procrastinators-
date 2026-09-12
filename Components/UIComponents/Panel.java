@@ -14,6 +14,7 @@ public class Panel extends JPanel{
     final int screenHeight = 1000;
 
     MouseHandler mouse = new MouseHandler();
+    General gen = new General(this);
     
     public Panel(){
 
@@ -24,17 +25,12 @@ public class Panel extends JPanel{
         this.addMouseListener(mouse);
     }
 
-    public void draw(Graphics2D g2){
-
-        this.setBackground(Color.decode("#2b035f"));
-    }
-
     @Override 
     public void paintComponent(Graphics g){
         super.paintComponent(g); 
 
         Graphics2D g2 = (Graphics2D)g; 
 
-        draw(g2);
+        gen.draw(g2);
     }
 }
