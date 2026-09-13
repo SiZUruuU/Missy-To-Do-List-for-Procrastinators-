@@ -2,7 +2,7 @@
 
 _Work in Progress : No stable version_
 
-## Description:
+### Description:
 Missy is a to-do list for procrastinators like us that adds spice and
 fun-engagement for tasks by turning it into _gameified_ todos!
 
