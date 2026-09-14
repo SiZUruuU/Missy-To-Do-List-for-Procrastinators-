@@ -10,15 +10,15 @@ import Components.Utilities.MouseHandler;
 
 public class Panel extends JPanel{
 
-    final int screenWidth = 1000;
-    final int screenHeight = 1000;
+    final int SCREEN_WIDTH = 800;
+    final int SCREEN_HEIGHT = 400;
 
     MouseHandler mouse = new MouseHandler();
     General gen = new General(this);
     
     public Panel(){
 
-        this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+        this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setLayout(null);
         this.setDoubleBuffered(true);
 
