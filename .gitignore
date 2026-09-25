@@ -1,0 +1,32 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+
+# Java specific
+.classpath
+.project
+.settings/
+.factorypath
+*.class
+
+# Secrets and credentials
+.env
+*.pem
+*.key
+
+# Logs and diagnostic files
+*.log
+npm-debug.log*
+
+# Common dependencies and build outputs
+node_modules/
+__pycache__/
+dist/
+build/
+target/
+bin/
