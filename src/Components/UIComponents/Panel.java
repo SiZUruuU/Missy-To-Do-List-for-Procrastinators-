@@ -10,8 +10,8 @@ import Components.Utilities.MouseHandler;
 
 public class Panel extends JPanel{
 
-    final int SCREEN_WIDTH = 800;
-    final int SCREEN_HEIGHT = 400;
+    final int SCREEN_WIDTH = 1000;
+    final int SCREEN_HEIGHT = 1000;
 
     MouseHandler mouse = new MouseHandler();
     General gen = new General(this);
