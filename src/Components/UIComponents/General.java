@@ -42,6 +42,15 @@ public class General {
         System.out.println(textW);
 
         g2.drawString(text, (panel.SCREEN_WIDTH - textW) / 2, panel.SCREEN_HEIGHT / 6);
+
+        g2.setFont(maruMonica.deriveFont(Font.BOLD, 60F));
+        g2.setColor(Color.BLACK);
+        text = "Database testing phase";
+
+        textW = (fm.stringWidth(text)) * 3;
+        System.out.println(textW);
+
+        g2.drawString(text, (panel.SCREEN_WIDTH - textW) / 2, panel.SCREEN_HEIGHT / 3);
     }
     
 }

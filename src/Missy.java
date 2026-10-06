@@ -1,17 +1,22 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import javax.swing.JFrame;
 
+import Components.Stages.Main;
+import Components.Tasks.Database;
 import Components.UIComponents.Panel;
+
+import java.util.Scanner;
 
 public class Missy {
 
     private static final String URL = "jdbc:mysql://localhost:3306/missytodo";
     private static final String USER = "root";
     private static final String PASSWORD = "sm8zerxZ!%Du5i,";
-    public static void main(String [] args){
+    public static void main(String [] args) throws SQLException{
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,5 +34,24 @@ public class Missy {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        Main main = new Main();
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Enter task name: ");
+        String task = in.nextLine();
+
+        System.out.print("Enter task deadline (YYYY-MM-DD): ");
+        LocalDate deadline = LocalDate.parse(in.nextLine());
+
+        System.out.print("Enter task priority (LOW, MEDIUM, HIGH): ");
+        String priority = in.nextLine();
+
+        Database db = new Database();
+        db.connect();
+
+        main.add_query(task, deadline, priority);
+        main.display_query();
+
     }
 }
