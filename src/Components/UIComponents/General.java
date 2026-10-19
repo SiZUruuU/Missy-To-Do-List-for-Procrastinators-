@@ -31,7 +31,11 @@ public class General {
     }
 
     public void draw(Graphics2D g2){
+        intro(g2);
+        keyboardInput(g2);
+    }
 
+    public void intro(Graphics2D g2){
         FontMetrics fm = g2.getFontMetrics();
 
         g2.setFont(maruMonica.deriveFont(Font.BOLD, 60F));
@@ -39,7 +43,6 @@ public class General {
         String text = "Hello, Missy";
 
         int textW = (fm.stringWidth(text)) * 3;
-        System.out.println(textW);
 
         g2.drawString(text, (panel.SCREEN_WIDTH - textW) / 2, panel.SCREEN_HEIGHT / 6);
 
@@ -48,9 +51,23 @@ public class General {
         text = "Database testing phase";
 
         textW = (fm.stringWidth(text)) * 3;
-        System.out.println(textW);
 
         g2.drawString(text, (panel.SCREEN_WIDTH - textW) / 2, panel.SCREEN_HEIGHT / 3);
+
+        g2.setFont(maruMonica.deriveFont(Font.BOLD, 40F));
+        g2.setColor(Color.BLACK);
+    }
+
+    public void keyboardInput(Graphics2D g2){
+
+        FontMetrics fm = g2.getFontMetrics();
+
+        g2.setFont(maruMonica.deriveFont(Font.BOLD, 40F));
+        g2.setColor(Color.BLACK);
+        String text = "Keyboard input: " + panel.key.getTyped();
+
+
+        g2.drawString(text, panel.SCREEN_WIDTH / 4, panel.SCREEN_HEIGHT / 2);
     }
     
 }

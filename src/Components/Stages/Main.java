@@ -15,9 +15,9 @@ public class Main {
     int id = 0;
 
     //TESTING FOR DATABASE CONNECTION
-    public void add_query(String title, LocalDate deadline, String priority) throws SQLException {
+    public void add_query(String title, LocalDate deadline, String priority, String desc) throws SQLException {
         id = db.counts();
-        db.add(title, deadline, priority);
+        db.add(title, deadline, priority, desc);
     }
 
     public void delete_query(int id) throws SQLException {

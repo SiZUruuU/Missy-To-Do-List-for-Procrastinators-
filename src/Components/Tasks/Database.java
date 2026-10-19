@@ -25,7 +25,7 @@ public class Database {
             throw new SQLException("Cannot create data folder", e); 
         } 
 
-        return DriverManager.getConnection("jdbc:sqlite:" + DIR.resolve("todo.db")); 
+        return DriverManager.getConnection("jdbc:sqlite:" + DIR.resolve("todos.db")); 
     }
 
 
@@ -36,6 +36,7 @@ public class Database {
                 CREATE TABLE IF NOT EXISTS tasks (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     title TEXT NOT NULL,
+                    description TEXT,
                     deadline TEXT NOT NULL,
                     priority TEXT NOT NULL DEFAULT 'MEDIUM'
                         CHECK (priority IN ('LOW', 'MEDIUM', 'HIGH')),
@@ -47,12 +48,13 @@ public class Database {
 
 
     //Uses SQL queries to add tasks to the database
-    public int add(String name, LocalDate deadline, String priority) throws SQLException {
-        String sql = "INSERT INTO tasks (title, deadline, priority) VALUES (?, ?, ?)"; 
+    public int add(String name, LocalDate deadline, String priority, String desc) throws SQLException {
+        String sql = "INSERT INTO tasks (title, deadline, priority, description) VALUES (?, ?, ?, ?)"; 
         try (Connection c = connect(); PreparedStatement ps = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) { 
             ps.setString(1, name); 
             ps.setString(2, deadline.toString()); 
             ps.setString(3, priority); 
+            ps.setString(4, desc);
             ps.executeUpdate(); 
 
             try (ResultSet k = ps.getGeneratedKeys()) { return k.next() ? k.getInt(1) : -1; } 
@@ -73,14 +75,19 @@ public class Database {
         try (Connection c = connect();
              Statement st = c.createStatement();
              ResultSet rs = st.executeQuery(
-                 "SELECT id, title, deadline, priority, is_done FROM tasks ORDER BY id")) {
+                 "SELECT id, title, deadline, priority, is_done, description FROM tasks ORDER BY id")) {
 
             boolean any = false;
             while (rs.next()) {
                 any = true;
-                System.out.printf("   #%d | %-14s | %s | %-6s | done=%d%n",
-                        rs.getInt("id"), rs.getString("title"), rs.getString("deadline"),
-                        rs.getString("priority"), rs.getInt("is_done"));
+                System.out.printf("   #%d | %-14s | %s | %s | %-6s | done=%d%n | ",
+                        rs.getInt("id"), 
+                        rs.getString("title"), 
+                        rs.getString("description"), 
+                        rs.getString("deadline"),
+                        rs.getString("priority"), 
+                        rs.getInt("is_done")
+                    );
             }
             if (!any) System.out.println("   (no rows)");
         }
@@ -91,6 +98,13 @@ public class Database {
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM tasks")) {
             return rs.next() ? rs.getInt(1) : 0;
+        }
+    }
+
+    public void clear() throws SQLException {
+        try (Connection c = connect(); Statement st = c.createStatement()) {
+            st.executeUpdate("DELETE FROM tasks");
+            st.executeUpdate("DELETE FROM sqlite_sequence WHERE name='tasks'");
         }
     }
 }
