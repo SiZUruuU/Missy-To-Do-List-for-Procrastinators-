@@ -1,26 +1,33 @@
 package Components.UIComponents;
-import java.awt.Color;
+    
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints.Key;
-
 import javax.swing.JPanel;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import Components.Utilities.MouseHandler;
+import Components.Utilities.ButtonManager;
+import Components.Utilities.FontManager;
 import Components.Utilities.KeyHandler;
 
+
+
 public class Panel extends JPanel{
+
+    ButtonManager bm = new ButtonManager(this);
+    KeyHandler key = new KeyHandler(this::repaint);
+    MouseHandler mouse = new MouseHandler(bm);
+    FontManager fm = new FontManager();
+    General gen = new General(this);
+    
+    Font maruFont = fm.loadFont("/Assets/Fonts/x12y16pxMaruMonica.ttf");
 
     final int SCREEN_WIDTH = 1000;
     final int SCREEN_HEIGHT = 1000;
 
-    MouseHandler mouse = new MouseHandler();
-    KeyHandler key = new KeyHandler(this::repaint);
-    General gen = new General(this);
     
     public Panel(){
 
@@ -37,7 +44,6 @@ public class Panel extends JPanel{
             }
         });
     }
-
 
 
     @Override 

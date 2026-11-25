@@ -13,10 +13,6 @@ import java.util.Scanner;
 
 public class Missy {
 
-    // private static final String URL = "jdbc:mysql://localhost:3306/missytodo";
-    // private static final String USER = "root";
-    // private static final String PASSWORD = "sm8zerxZ!%Du5i,";
-
     public static void main(String [] args) throws SQLException{
 
         JFrame frame = new JFrame();

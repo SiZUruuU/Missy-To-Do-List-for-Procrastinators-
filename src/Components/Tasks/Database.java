@@ -93,6 +93,11 @@ public class Database {
         }
     }
 
+    public void getTasks(){
+        int[] tasks;
+
+    }
+
     public int counts() throws SQLException {
         try (Connection c = connect();
             Statement st = c.createStatement();

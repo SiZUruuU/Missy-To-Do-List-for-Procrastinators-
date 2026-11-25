@@ -2,14 +2,10 @@ package Components.Utilities;
 
 //This is for Window Enums
 public enum States {
+    INTRO,
     MAIN,
+    SETTINGS,
+    MISSY,
     LOCKIN,
     POMODORO, 
-}
-
-enum PriorityLabel {
-    LOW,
-    MEDIUM,
-    HIGH,
-    URGENT
 }

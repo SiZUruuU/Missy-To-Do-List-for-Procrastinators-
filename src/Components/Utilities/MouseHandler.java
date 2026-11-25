@@ -6,6 +6,11 @@ import javax.swing.event.MouseInputListener;
 
 public class MouseHandler implements  MouseInputListener{
 
+    private final ButtonManager buttonManager;
+
+    public MouseHandler(ButtonManager buttonManager){
+        this.buttonManager = buttonManager;
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -14,7 +19,6 @@ public class MouseHandler implements  MouseInputListener{
         int y = e.getY();
 
         System.out.println("Pressed at " + x + " " + y);
-
 
     }
 
