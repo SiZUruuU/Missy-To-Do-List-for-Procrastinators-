@@ -1,5 +1,6 @@
 package Components.Utilities;
 
+import Components.Utilities.States;
 import Components.UIComponents.ScreenManager;
 
 import javax.swing.*;

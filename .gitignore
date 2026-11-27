@@ -16,6 +16,7 @@ Thumbs.db
 
 # Secrets and credentials
 .env
+config.properties
 *.pem
 *.key
 
